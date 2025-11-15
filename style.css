@@ -1,0 +1,442 @@
+/* Variáveis de Cores (Paleta High-Tech) */
+:root {
+    --color-background: #0D1117; /* Fundo Ultra Escuro (GitHub Dark) */
+    --color-text-primary: #f0f6fc; /* Texto Claro Principal */
+    --color-text-secondary: #8b949e; /* Texto Secundário (cinza) */
+    --color-accent: #1499ff; /* Destaque Neon Verde */
+    --color-accent-dark: #2c4e97; 
+    --color-card-bg: #161B22; /* Fundo dos Cards/Seções */
+    --color-border: #30363D; /* Cor da Borda/Divisor */
+    --color-shadow-glow: rgba(20, 114, 255, 0.5); /* Sombra intensa para o neon */
+    --font-code: 'Roboto Mono', monospace; /* Fonte Monospace para look de terminal */
+}
+
+/* --- Keyframes & Animações Fluidas --- */
+
+/* Efeito de Cursor Piscando (para o terminal look) */
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* Efeito de Text Scramble (para o H1) */
+@keyframes type {
+    from { width: 0; }
+}
+
+/* Efeito de Fluxo de Dados de Fundo */
+@keyframes scan-flow {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 -100px; }
+}
+
+/* Reset Básico e Tipografia */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-code);
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    transition: background-color 0.5s ease;
+}
+
+/* --- Estilo de Terminal/Grade de Fundo (Visualmente informativo) --- */
+body::before {
+    content: '';
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    /* Linhas finas para simular o papel quadriculado do terminal */
+    background-image: linear-gradient(to right, rgba(57, 255, 20, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(57, 255, 20, 0.05) 1px, transparent 1px);
+    background-size: 25px 25px;
+    opacity: 0.2; 
+    pointer-events: none;
+}
+
+
+/* Garante que todo o conteúdo fique por cima do fundo */
+main, header, footer, section {
+    position: relative;
+    z-index: 10;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-text-primary);
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw + 1rem, 4rem); line-height: 1.1; }
+h2 { font-size: clamp(1.8rem, 3vw + 1rem, 2.5rem); text-align: center; margin-bottom: 40px;}
+h3 { font-size: 1.5rem; }
+
+/* Estrutura e Container */
+section {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.section-title {
+    color: var(--color-accent);
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+}
+
+/* --- Componentes de Botões --- */
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 4px; /* Cantos retos para look tech */
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    border: 2px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    box-shadow: 0 0 15px var(--color-shadow-glow); 
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-dark);
+    box-shadow: 0 0 25px var(--color-shadow-glow);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 2px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text-primary);
+    background-color: rgba(57, 255, 20, 0.1);
+}
+
+/* --- Header Fixo (Estilo de Barra de Menu de Código) --- */
+.header {
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 5%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom: 3px solid var(--color-accent); /* Linha de ênfase */
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+    z-index: 1000;
+}
+html {
+    scroll-behavior: smooth;
+}
+.logo-ifc {
+    color: var(--color-text-primary);
+    font-weight: 700;
+}
+
+.logo-redes {
+    color: var(--color-accent);
+    font-weight: 500;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+}
+
+.nav a {
+    margin: 0 15px;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    position: relative;
+
+}
+
+.nav a:hover {
+    color: var(--color-accent);
+}
+
+/* --- Seção Principal (Hero) - Foco Visual e Animação --- */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    padding-top: 120px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 2px dashed var(--color-border);
+
+}
+
+.hero-content {
+    max-width: 800px;
+    
+    position: relative;
+    z-index: 20; /* Fica acima de qualquer visual de fundo */
+
+}
+
+/* Efeito de digitação no título (simulação de terminal) */
+.hero-title {
+    overflow: hidden; 
+    border-right: 3px solid var(--color-accent); /* O cursor do terminal */
+    width: 100%;
+    animation: 
+        type 2s steps(40, end) 1s forwards, 
+        blink .75s step-end infinite;
+    white-space: nowrap;
+    margin: 0 auto;
+    color: var(--color-text-primary);
+    background: none; /* remove o gradiente anterior */
+    filter: drop-shadow(0 0 5px var(--color-shadow-glow));
+}
+
+.hero-title strong {
+    color: var(--color-accent);
+}
+
+.subtitle {
+    color: var(--color-text-secondary);
+    margin-top: 30px;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-hero {
+    margin-top: 40px;
+}
+
+/* --- Efeito de Fluxo de Dados de Fundo (visual-flow) --- */
+.visual-flow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    z-index: 1; 
+    /* Simulação de dados fluindo */
+    background: repeating-linear-gradient(
+        180deg, 
+        rgba(57, 255, 20, 0.05) 0px, 
+        rgba(57, 255, 20, 0.0) 2px, 
+        rgba(57, 255, 20, 0.05) 3px
+    );
+    background-size: 100% 100px;
+    opacity: 0.15;
+    animation: scan-flow 10s linear infinite;
+    pointer-events: none;
+}
+
+/* --- Seção Diferenciais (Grid de Módulos) --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+.feature-item {
+    background-color: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 25px var(--color-shadow-glow); 
+    background-color: #11151A;
+}
+
+.feature-item .icon {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px var(--color-shadow-glow);
+}
+
+.feature-item h3 {
+    margin-bottom: 10px;
+}
+
+/* --- Seção Sobre (Flex Layout) --- */
+.about-section {
+    border-bottom: none;
+}
+
+.about-content-flex {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.about-text {
+    flex: 3;
+}
+
+.about-text p {
+    margin-bottom: 25px;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+.about-details {
+    flex: 2;
+    background-color: var(--color-card-bg);
+    padding: 30px;
+    border: 1px solid var(--color-accent);
+    border-radius: 4px;
+}
+
+.details-title {
+    color: var(--color-accent);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.about-details ul {
+    list-style: none;
+}
+
+.about-details li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.about-details li:last-child {
+    border-bottom: none;
+}
+
+.about-details .key {
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+/* --- Seção CTA Final --- */
+.cta-final-section {
+    text-align: center;
+    padding-bottom: 100px;
+    border-top: 1px solid var(--color-border);
+}
+
+.cta-final-section p {
+    margin-bottom: 30px;
+    color: var(--color-text-secondary);
+}
+
+.cta-buttons > * {
+    margin: 10px;
+}
+
+/* --- Footer --- */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #000000;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+
+/* --- Media Queries (Responsividade) --- */
+@media (max-width: 900px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        position: static;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+    
+    .nav {
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-section {
+        min-height: 80vh;
+    
+    }
+
+    .about-content-flex {
+        flex-direction: column;
+
+    }
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+}
+.hero-section{
+/* 1. Adiciona um degradê preto semi-transparente como primeira camada */
+    background-image: 
+        linear-gradient(rgba(7, 7, 7, 0.873), rgba(0, 0, 0, 0.907)), 
+        /* 2. A imagem de fundo é a segunda camada */
+        url("images/ifc-local.jpg");
+        
+    /* Configurações de exibição da imagem */
+    background-size: cover;
+    background-position: center;
+    max-width: 100%;
+    height: 400px; /* Defina uma altura para a seção ser visível */
+
+}
+header{
+    background-image: 
+        linear-gradient(rgba(11, 41, 67, 0.971), rgba(0, 0, 0, 0.971)), 
+        /* 2. A imagem de fundo é a segunda camada */
+        url("images/image.png");
+        
+}
+header .logo{
+    font-size: 1.2rem;
+}
