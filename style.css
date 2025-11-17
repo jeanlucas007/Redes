@@ -90,7 +90,7 @@ h3 { font-size: 1.5rem; }
 
 /* Estrutura e Container */
 section {
-    padding: 80px 5%;
+
     max-width: 1200px;
     margin: 0 auto;
     border-bottom: 1px solid var(--color-border);
@@ -177,19 +177,20 @@ html {
     position: relative;
 
 }
+.logo, .nav{
+    padding: 0 30vh 0 30vh;
+}
 
 .nav a:hover {
     color: var(--color-accent);
 }
 
-/* --- Seção Principal (Hero) - Foco Visual e Animação --- */
+
 .hero-section {
     display: flex;
-    align-items: center;
-    justify-content: center;
     text-align: center;
     min-height: 100vh;
-    padding-top: 120px;
+    padding: 25vh;
     overflow: hidden;
     position: relative;
     border-bottom: 2px dashed var(--color-border);
@@ -197,27 +198,13 @@ html {
 }
 
 .hero-content {
-    max-width: 800px;
-    
     position: relative;
     z-index: 20; /* Fica acima de qualquer visual de fundo */
-
+    
 }
 
 /* Efeito de digitação no título (simulação de terminal) */
-.hero-title {
-    overflow: hidden; 
-    border-right: 3px solid var(--color-accent); /* O cursor do terminal */
-    width: 100%;
-    animation: 
-        type 2s steps(40, end) 1s forwards, 
-        blink .75s step-end infinite;
-    white-space: nowrap;
-    margin: 0 auto;
-    color: var(--color-text-primary);
-    background: none; /* remove o gradiente anterior */
-    filter: drop-shadow(0 0 5px var(--color-shadow-glow));
-}
+
 
 .hero-title strong {
     color: var(--color-accent);
@@ -231,9 +218,24 @@ html {
     margin-left: auto;
     margin-right: auto;
 }
+.cta-hero p {
+    max-width: 600px;
+    text-align: justify;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height .6s ease, opacity .6s ease;
+}
 
-.cta-hero {
-    margin-top: 40px;
+/* quando ativo */
+.cta-hero p.open {
+    max-height: 300px; /* ajusta conforme o tamanho do texto */
+    opacity: 1;
+}
+
+.cta-hero h1{
+    margin-top: 150px;
+    text-align: left;
 }
 
 /* --- Efeito de Fluxo de Dados de Fundo (visual-flow) --- */
@@ -421,7 +423,7 @@ html {
     background-image: 
         linear-gradient(rgba(7, 7, 7, 0.873), rgba(0, 0, 0, 0.907)), 
         /* 2. A imagem de fundo é a segunda camada */
-        url("images/ifc-local.jpg");
+        url("images/ifc-local-preto-branco.png");
         
     /* Configurações de exibição da imagem */
     background-size: cover;
