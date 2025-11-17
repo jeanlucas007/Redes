@@ -62,7 +62,10 @@ body::before {
     opacity: 0.2; 
     pointer-events: none;
 }
+.ocult{
+    display: none;
 
+}
 
 /* Garante que todo o conteúdo fique por cima do fundo */
 main, header, footer, section {
@@ -79,7 +82,9 @@ a {
 a:hover {
     color: var(--color-text-primary);
 }
-
+h2{
+    margin-top: 20px;
+}
 h1, h2, h3 {
     font-weight: 700;
 }
@@ -149,12 +154,7 @@ section {
     align-items: center;
     justify-content: space-between;
     padding: 1.5rem 5%;
-    background-color: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border-bottom: 3px solid var(--color-accent); /* Linha de ênfase */
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
-    z-index: 1000;
+
 }
 html {
     scroll-behavior: smooth;
@@ -178,7 +178,7 @@ html {
 
 }
 .logo, .nav{
-    padding: 0 30vh 0 30vh;
+    padding: 0 5rem 0 5rem;
 }
 
 .nav a:hover {
@@ -209,7 +209,6 @@ html {
 .hero-title strong {
     color: var(--color-accent);
 }
-
 .subtitle {
     color: var(--color-text-secondary);
     margin-top: 30px;
@@ -218,13 +217,34 @@ html {
     margin-left: auto;
     margin-right: auto;
 }
-.cta-hero p {
+.cta-hero .pp {
     max-width: 600px;
     text-align: justify;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
     transition: max-height .6s ease, opacity .6s ease;
+    padding: 0;
+}
+.section-title2{
+
+    margin: 8rem 0 0 0;
+    text-align: right;
+}
+.btn-secondary2{
+   position: relative;        /* relativo à seção/pai */
+    margin: 20px auto 0 auto;  /* centraliza horizontalmente e dá espaço do topo */
+    display: block;            /* garante comportamento de bloco */
+    z-index: 10;               /* acima do conteúdo da seção */
+
+
+}
+.about-text2, .section-title2 {
+    max-width: 600px;
+    margin: 0 auto;            /* centraliza no container */
+    text-align: justify;        /* mantém o alinhamento do texto */
+    position: relative;         /* relativo ao container */
+    left: 0;                    /* remove deslocamento anterior */
 }
 
 /* quando ativo */
@@ -234,7 +254,8 @@ html {
 }
 
 .cta-hero h1{
-    margin-top: 150px;
+    padding: 10px 0;
+    margin-top: 50px;
     text-align: left;
 }
 
@@ -265,10 +286,14 @@ html {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     text-align: left;
+        position: relative; /* cria contexto para z-index */
+    z-index: 0; 
 }
 
 .feature-item {
-    background-color: var(--color-card-bg);
+    position: relative; /* cria contexto para z-index */
+    z-index: 0;          /* menor que o header (que tem z-index: 1000) */
+    background-color: var(--color-card-bg); /* mantém cor de fundo */
     padding: 30px;
     border-radius: 4px;
     border: 1px solid var(--color-border);
@@ -281,9 +306,12 @@ html {
     border-color: var(--color-accent);
     box-shadow: 0 0 25px var(--color-shadow-glow); 
     background-color: #11151A;
+        position: relative;      /* necessário para z-index funcionar */
+    z-index: 500;  
 }
 
 .feature-item .icon {
+
     display: inline-block;
     font-size: 2rem;
     font-weight: 700;
@@ -294,6 +322,8 @@ html {
 
 .feature-item h3 {
     margin-bottom: 10px;
+        position: relative;      /* necessário para z-index funcionar */
+    z-index: 500;  
 }
 
 /* --- Seção Sobre (Flex Layout) --- */
@@ -378,50 +408,162 @@ html {
 
 
 /* --- Media Queries (Responsividade) --- */
-@media (max-width: 900px) {
+
+
+@media (max-width: 1280px) {
+    .about-section{
+        display: none;
+    }
+    
+    .ocult, .pp{
+        display: block !important;
+        max-height: none !important;   /* remove a restrição de altura */
+        opacity: 1 !important;         /* torna visível */
+        overflow: visible !important;  /* evita cortar o conteúdo */
+        transition: none !important;   /* remove animações */
+}
+    .hamburger {
+    width: 35px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 2000;
+    right: 20px;
+
+}
+
+.hamburger span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+.hero-content{
+    display: none;
+}
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 5%;
+    background-color: var(--color-card-bg);
+    padding: 20px;
+    border-radius: 6px;
+
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nav-menu.active {
+    display: flex;
+}
+
+/* Transformação do hambúrguer em X */
+
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+    /* Ajusta header */
     .header {
-        flex-direction: column;
-        gap: 10px;
-        position: static;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        box-shadow: none;
-        backdrop-filter: none;
-    }
-    
-    .nav {
-        display: flex;
-        justify-content: center;
+        align-items: center;
+        padding: 15px 5%;
+        border-bottom: 2px solid var(--color-accent);
+            z-index: 2000; 
     }
 
+    .logo, .nav {
+        padding: 0;
+        text-align: center;
+
+    }
+    
+    .nav a {
+        
+        margin: 5px 10px;
+        font-size: 0.9rem;
+    }
+
+    section{
+        padding: 0 5% 10vh 5%;
+    }
     .hero-section {
-        min-height: 80vh;
-    
+        padding: 0 5% 10vh 5%;
+        min-height: 10vh;
+        text-align: center;
+        
     }
 
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    .hero-title:hover{
+    font-size: 1.8rem;
+    } 
+    .subtitle {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+    
+    .cta-hero p {
+        font-size: 0.9rem;
+        max-width: 90%;
+    }
+
+    /* Cards da seção features empilhados */
+    .features-grid {
+        grid-template-columns: 1fr; /* 1 coluna */
+        gap: 20px;
+    }
+
+    /* Flex sobre a seção About vira coluna */
     .about-content-flex {
         flex-direction: column;
-
-    }
-}
-
-@media (max-width: 600px) {
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.6rem; }
-
-    .features-grid {
-        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
+    .about-details {
+        padding: 20px;
+    }
+
+    /* Botões em coluna e menores */
     .cta-buttons {
-        display: flex;
         flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 0.9rem;
+    }
+
+    /* Footer ajustado */
+    .footer {
+        font-size: 0.8rem;
+        padding: 15px;
+    }
+
+    /* Ajuste da hero background para caber melhor em celular */
+    .especial {
+        background-position: center top;
+        height: 300px;
     }
 }
-.hero-section{
+.especial{
 /* 1. Adiciona um degradê preto semi-transparente como primeira camada */
     background-image: 
-        linear-gradient(rgba(7, 7, 7, 0.873), rgba(0, 0, 0, 0.907)), 
+        linear-gradient(rgba(7, 7, 7, 0.913), rgba(0, 0, 0, 0.885)), 
         /* 2. A imagem de fundo é a segunda camada */
         url("images/ifc-local-preto-branco.png");
         
@@ -429,16 +571,114 @@ html {
     background-size: cover;
     background-position: center;
     max-width: 100%;
-    height: 400px; /* Defina uma altura para a seção ser visível */
+    height: 1000px; /* Defina uma altura para a seção ser visível */
 
 }
-header{
-    background-image: 
-        linear-gradient(rgba(11, 41, 67, 0.971), rgba(0, 0, 0, 0.971)), 
-        /* 2. A imagem de fundo é a segunda camada */
-        url("images/image.png");
-        
-}
+
 header .logo{
     font-size: 1.2rem;
+}
+
+@media (max-width: 1280px) {
+        /* Hero section centralizado e menor */
+    h1{
+        font-size: 3rem;
+        
+    }
+    h2{
+        font-size: 1.5rem;
+        margin-top: 20px;
+    }
+    .ocult{
+            margin-top: 90px; /* afasta do próximo conteúdo */
+    }
+    .hero-section {
+        padding: 5% 5% 10vh 5%;
+        min-height: 110vh;
+        text-align: center;
+    }
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    .subtitle {
+        font-size: 1rem;
+        margin-top: 20px;
+        
+    }
+    .cta-hero p {
+        font-size: 0.9rem;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    /* Nav menu mobile */
+    .nav {
+        text-align: center;
+        padding: 0;
+    }
+    .nav a {
+        margin: 5px 10px;
+        font-size: 0.9rem;
+    }
+    .hamburger {
+        display: flex;
+    }
+
+    /* Features empilhados */
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* About section vira coluna */
+    .about-content-flex {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .about-details {
+        padding: 20px;
+    }
+
+    /* CTA Buttons mobile */
+    .cta-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 0.9rem;
+    }
+
+    /* Footer menor */
+    .footer {
+        font-size: 0.8rem;
+        padding: 15px;
+    }
+}
+
+/* Ajuste para telas grandes (até 1600px) */
+@media (min-width: 1281px){
+    section {
+        max-width: 1200px;
+        padding: 0 5%;
+    }
+    .hero-section {
+        padding: 16vh 0 0 1%;
+    }
+    .hero-title {
+        font-size: 3rem;
+    }
+    .subtitle {
+        font-size: 1.2rem;
+        
+    }
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+    .about-content-flex {
+        flex-direction: row;
+        gap: 50px;
+    }
 }

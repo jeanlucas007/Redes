@@ -10,13 +10,19 @@
 </head>
 
 <body>
+<section class="especial">
 
     <header class="header">
         <div class="logo">
             <span class="logo-ifc">IFC</span>
             <span class="logo-redes">:: REDES</span>
         </div>
-        <nav class="nav">
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+        <nav id="nav-menu" class="nav nav-menu">
             <a href="#sobre">Sobre</a>
             <a href="#diferenciais">Vantagens</a>
             <a href="#contato">Ingresso</a>
@@ -31,41 +37,58 @@
                 <img src="images/LOGO-REDES.png" alt="">
             </div>
             <div class="cta-hero">
-                <h1 class="hero-title  gradient-anim" onclick="abrir()" on>Sua Carreira<br>Começa Aqui!</br></h1>
-                
-            
-                <p>No IFC você encontra uma formação sólida em Redes de Computadores, preparada para atuar em
+                <h1 class="hero-title  gradient-anim" onclick="abrir()">Sua Carreira<br>Começa Aqui!</h1>
+
+                <p class="pp">No IFC você encontra uma formação sólida em Redes de Computadores, preparada para atuar em
                     infraestrutura de redes, administração de sistemas, serviços em nuvem e segurança da informação.
                     A aprendizagem é centrada na prática: uso de laboratório, implementação de cenários reais e
                     desenvolvimento de projetos, sempre com o acompanhamento próximo de um corpo docente altamente
                     qualificado.
                 </p>
-            </div>
-<style>
-.gradient-anim {
-    background: linear-gradient(90deg, #a8c0ff, #3f2b96, #4cc9f0);
-    background-size: 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    animation: gradientMove 6s ease infinite;
-    cursor: pointer;
-}
-
-
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-.gradient-anim:hover{
-    font-size: 66px;
-    transition: 0.4s;
-}
-</style>
+        <div class ="ocult">
+            <h2 class="section-title section-title2">Sobre o Curso</h2>    
+            <div class="about-content-flex about-content-flex2">
+                <div class="about-text about-text2">
+                    <p>O curso oferece uma formação completa e atualizada para o mercado de TI. Você será preparado para
+                        projetar, configurar, gerenciar e monitorar redes de computadores, além de dominar a
+                        administração de sistemas e a segurança da informação, focando sempre na prática.</p>
+                </div>
+                        <a href="https://redes.araquari.ifc.edu.br/" target="_blank" class="btn-secondary btn-secondary2">
+                        Acessar Site Oficial do Curso
+                    </a>
+                
+            <div>   
+        </div> 
 
 
+             </div>
+                <style>
+                .gradient-anim {
+                    background: linear-gradient(90deg, #a8c0ff, #3f2b96, #4cc9f0);
+                    background-size: 300%;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+
+                    animation: gradientMove 6s ease infinite;
+                    cursor: pointer;
+                }
+
+
+                @keyframes gradientMove {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                .gradient-anim:hover{
+                    transform: scale(1.01);
+                    transition: 0.4s;
+                }
+                </style>
+
+            
             <div class="visual-flow"></div>
+
+        </section>
         </section>
         <section id="sobre" class="about-section">
             <h2 class="section-title">Sobre o Curso</h2>
@@ -141,8 +164,13 @@
                 <a href="https://ingresso.ifc.edu.br" target="_blank" class="btn-primary">
                     Portal de Ingresso
                 </a>
+                <a href="mailto:redes.grad.araquari@ifc.edu.br" class="btn-secondary">
+                    Fale com a Coordenação
+                </a>
             </div>
         </section>
+    
+    
     </main>
 
     <footer class="footer">
@@ -162,6 +190,16 @@ window.addEventListener("scroll", () => {
         jaAbriuPeloScroll = true;
     }
 });
+//hamburuguer
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active'); // anima o ícone
+    navMenu.classList.toggle('active');   // mostra/esconde menu
+});
+
 </script>
 </body>
+
 </html>
