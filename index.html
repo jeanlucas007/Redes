@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    
+
     <header class="header">
         <div class="logo">
             <span class="logo-ifc">IFC</span>
@@ -27,26 +29,51 @@
         <section class="hero-section">
             <div class="hero-content">
                 <img src="images/LOGO-REDES.png" alt="">
-                <style>img{
-                    width: 400px;
-                }
-                    </style>
-                <h1 class="hero-title">Sua Carreira<br>Começa Aqui!</h1>
-                
-                
-                <div class="cta-hero">
-                    <a href="https://ingresso.ifc.edu.br" target="_blank" class="btn-primary" id="cta-ingressar">
-                        Registrar Interesse
-                    </a>
-                </div>
             </div>
+            <div class="cta-hero">
+                <h1 class="hero-title  gradient-anim" onclick="abrir()" on>Sua Carreira<br>Começa Aqui!</br></h1>
+                
+            
+                <p>No IFC você encontra uma formação sólida em Redes de Computadores, preparada para atuar em
+                    infraestrutura de redes, administração de sistemas, serviços em nuvem e segurança da informação.
+                    A aprendizagem é centrada na prática: uso de laboratório, implementação de cenários reais e
+                    desenvolvimento de projetos, sempre com o acompanhamento próximo de um corpo docente altamente
+                    qualificado.
+                </p>
+            </div>
+<style>
+.gradient-anim {
+    background: linear-gradient(90deg, #a8c0ff, #3f2b96, #4cc9f0);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: gradientMove 6s ease infinite;
+    cursor: pointer;
+}
+
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.gradient-anim:hover{
+    font-size: 66px;
+    transition: 0.4s;
+}
+</style>
+
+
             <div class="visual-flow"></div>
         </section>
         <section id="sobre" class="about-section">
             <h2 class="section-title">Sobre o Curso</h2>
             <div class="about-content-flex">
                 <div class="about-text">
-                    <p>O curso oferece uma formação completa e atualizada para o mercado de TI. Você será preparado para projetar, configurar, gerenciar e monitorar redes de computadores, além de dominar a administração de sistemas e a segurança da informação, focando sempre na prática.</p>
+                    <p>O curso oferece uma formação completa e atualizada para o mercado de TI. Você será preparado para
+                        projetar, configurar, gerenciar e monitorar redes de computadores, além de dominar a
+                        administração de sistemas e a segurança da informação, focando sempre na prática.</p>
                     <a href="https://redes.araquari.ifc.edu.br/" target="_blank" class="btn-secondary">
                         Acessar Site Oficial do Curso
                     </a>
@@ -65,37 +92,37 @@
         <section id="diferenciais" class="feature-section">
             <h2 class="section-title">Nossos Diferenciais</h2>
             <div class="features-grid">
-                
+
                 <div class="feature-item">
                     <span class="icon">01</span>
                     <h3>Dupla Formação</h3>
                     <p>Infraestrutura de Redes **e** Desenvolvimento Web para um perfil completo.</p>
                 </div>
-                
+
                 <div class="feature-item">
                     <span class="icon">02</span>
                     <h3>Certificações Globais</h3>
                     <p>Integração aos programas **AWS Academy** e **Cisco Networking Academy**.</p>
                 </div>
-                
+
                 <div class="feature-item">
                     <span class="icon">03</span>
                     <h3>Laboratório Prático</h3>
                     <p>A aprendizagem é centrada na prática, com **equipamentos físicos** para cenários reais.</p>
                 </div>
-                
+
                 <div class="feature-item">
                     <span class="icon">04</span>
                     <h3>Dedicação Máxima</h3>
                     <p>Corpo docente de mestres e doutores com 100% de **dedicação exclusiva**.</p>
                 </div>
-                
+
                 <div class="feature-item">
                     <span class="icon">05</span>
                     <h3>Excelência Pública</h3>
                     <p>Ensino **público, gratuito** e reconhecido por sua excelência acadêmica.</p>
                 </div>
-                
+
                 <div class="feature-item">
                     <span class="icon">06</span>
                     <h3>Foco em Projetos</h3>
@@ -103,12 +130,13 @@
                 </div>
             </div>
         </section>
-        
+
 
 
         <section id="contato" class="cta-final-section">
             <h2 class="section-title">Pronto para a Conexão?</h2>
-            <p>Se este curso faz sentido para o seu futuro, acesse o portal de ingresso ou o site oficial do curso para mais detalhes.</p>
+            <p>Se este curso faz sentido para o seu futuro, acesse o portal de ingresso ou o site oficial do curso para
+                mais detalhes.</p>
             <div class="cta-buttons">
                 <a href="https://ingresso.ifc.edu.br" target="_blank" class="btn-primary">
                     Portal de Ingresso
@@ -123,6 +151,21 @@
     <footer class="footer">
         <p>&copy; 2025 IFC - Campus Araquari | Tecnologia em Redes de Computadores</p>
     </footer>
+<script>
+const abri = document.querySelector(".cta-hero p");
+let jaAbriuPeloScroll = false;
 
+function abrir() {
+    abri.classList.toggle("open");
+}
+
+window.addEventListener("scroll", () => {
+    if (!jaAbriuPeloScroll && window.scrollY > 0) {
+        abri.classList.add("open");
+        jaAbriuPeloScroll = true;
+    }
+});
+</script>
 </body>
+
 </html>
