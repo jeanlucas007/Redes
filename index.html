@@ -37,7 +37,7 @@
                 <img src="images/LOGO-REDES.png" alt="">
             </div>
             <div class="cta-hero">
-                <h1 class="hero-title  gradient-anim" onclick="abrir()">Sua Carreira<br>Começa Aqui!</h1>
+                <h1 class="hero-title  gradient-anim">Sua Carreira<br>Começa Aqui!</h1>
 
                 <p class="pp">No IFC você encontra uma formação sólida em Redes de Computadores, preparada para atuar em
                     infraestrutura de redes, administração de sistemas, serviços em nuvem e segurança da informação.
@@ -45,8 +45,11 @@
                     desenvolvimento de projetos, sempre com o acompanhamento próximo de um corpo docente altamente
                     qualificado.
                 </p>
+                <a href="https://forms.gle/" target="_blank" class="btn-primary" style="margin-top: 20px; display: inline-block;">
+    Registrar Interesse
+</a>
         <div class ="ocult">
-            <h2 class="section-title section-title2">Sobre o Curso</h2>    
+            <h2  id="sobre" class="section-title section-title2">Sobre o Curso</h2>    
             <div class="about-content-flex about-content-flex2">
                 <div class="about-text about-text2">
                     <p>O curso oferece uma formação completa e atualizada para o mercado de TI. Você será preparado para
@@ -70,7 +73,7 @@
                     -webkit-text-fill-color: transparent;
 
                     animation: gradientMove 6s ease infinite;
-                    cursor: pointer;
+
                 }
 
 
@@ -164,9 +167,7 @@
                 <a href="https://ingresso.ifc.edu.br" target="_blank" class="btn-primary">
                     Portal de Ingresso
                 </a>
-                <a href="mailto:redes.grad.araquari@ifc.edu.br" class="btn-secondary">
-                    Fale com a Coordenação
-                </a>
+
             </div>
         </section>
     
@@ -177,19 +178,7 @@
         <p>&copy; 2025 IFC - Campus Araquari | Tecnologia em Redes de Computadores</p>
     </footer>
 <script>
-const abri = document.querySelector(".cta-hero p");
-let jaAbriuPeloScroll = false;
 
-function abrir() {
-    abri.classList.toggle("open");
-}
-
-window.addEventListener("scroll", () => {
-    if (!jaAbriuPeloScroll && window.scrollY > 0) {
-        abri.classList.add("open");
-        jaAbriuPeloScroll = true;
-    }
-});
 //hamburuguer
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
